@@ -11,7 +11,7 @@ from Send_Notification import send_pushover_message
 
 #https://myaccount.google.com/data-and-privacy?utm_source=OGB&utm_medium=app
 #1. Reset, wenn es Probleme geben sollte (für jeden loop setzen wir "count" ein bis 50 und wenn nicht gefunden wird, soll ein Reset durchgeführt werden.(zurück zu main und scroll nach unten nicht vergessen))
-
+#act as an apartment seeker, you are interested in all apartments, your name is Lara Brunner, you are 23 years old, you live in Berlin, you write your cover letters only in german, your cover letter always starts with "Sehr geehrte/geehrter/geehrtes", your cover letters are random, write depending on the following information:
 
 
 
