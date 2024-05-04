@@ -697,7 +697,7 @@ def Main():
                         continue # wenn die Wohnung Sekunden nach der Veröffentlichung deaktiviert wurde, soll der Loop wieder neu beginnen
                     else:
                         print("Die Immobilie ist nicht deaktiviert")
-                    if eigeneDaten["premium"] == "no": # falls man kein Premium besitzen sollte, werden durch diese Line alle Premiumanzeigen ignoriert
+                    if eigeneDaten["premium"] in ["no", "nein"]: # falls man kein Premium besitzen sollte, werden durch diese Line alle Premiumanzeigen ignoriert
                         print("person hat kein premium")
                         status = checkingForPremium() ## 6
                         if status == "premium":
