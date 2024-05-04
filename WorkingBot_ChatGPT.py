@@ -565,7 +565,7 @@ def ExtraktionAusGPT():
     for i in range(7):
         
         result += prompt[i]    
-    if result.lower() == "betreff":
+    if result.lower() in  ["betreff", "**Betre"]:
         result = ""
         count = 0
         counter = 0
