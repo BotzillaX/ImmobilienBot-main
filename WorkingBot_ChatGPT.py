@@ -9,6 +9,7 @@ import sys
 import random
 from Send_Notification import send_pushover_message
 
+py.FAILSAFE = False
 #https://myaccount.google.com/data-and-privacy?utm_source=OGB&utm_medium=app
 #1. Reset, wenn es Probleme geben sollte (für jeden loop setzen wir "count" ein bis 50 und wenn nicht gefunden wird, soll ein Reset durchgeführt werden.(zurück zu main und scroll nach unten nicht vergessen))
 #act as an apartment seeker, you are interested in all apartments, your name is Lara Brunner, you are 23 years old, you live in Berlin, you write your cover letters only in german, your cover letter always starts with "Sehr geehrte/geehrter/geehrtes", your cover letters are random, write depending on the following information:
@@ -25,7 +26,7 @@ message = 'Capcha on Screen' #Text der auf dem Handy ausgespuckt wird
 
 #noch für oder nicht für premium machen.
 #https://www.immobilienscout24.de/expose/149619965?referrer=RESULT_LIST_LISTING%2CTOTAL_RENT&searchId=6a6ae48a-3eaa-3240-af94-677252c77f34&searchType=drawn_area#/
-link = "https://www.immobilienscout24.de/Suche/shape/wohnung-mieten?shape=cXFnX0lrX19vQWZ5Q2NQdWJDY0U7ZWVyX0lzY19vQXpiQWl4SHhoQF9dcHRCbHtCfm9BamRFfHRAbkFmfkV9ZEZ6eER1YlN5eUtpZk97ZkdjYVZnc0BxcEFldUFxR2FoQXZ2QGFoQXJsQ31uRm55Q2d6QXh9Q3FnRWZtUnBnRXZ0TGB1QXdYdU5zc0ZgTHZYamVBcH5HdWhAbGJGemBAbGJGYn5DYF0.&numberofrooms=-2.0&price=-850.0&livingspace=30.0-&exclusioncriteria=projectlisting,swapflat&pricetype=calculatedtotalrent&sorting=2"
+link = "https://www.immobilienscout24.de/Suche/de/berlin/berlin/wohnung-mieten?numberofrooms=3.0-&price=-800.0&exclusioncriteria=projectlisting,swapflat&pricetype=rentpermonth&sorting=2&enteredFrom=result_list"
 clipboard.copy(link)
 Legende = {
     "averageTimerForLoop":0.1,
@@ -536,11 +537,16 @@ def ExtraktionAusGPT():
     time.sleep(Legende["averageTimeGeneral"]+0.2)
     
     max_loc, max_val = lookingForPixel("down")
+    count = 0
     beenden()
     while max_val < 0.90:
+        count+=1
         max_loc, max_val = lookingForPixel("down")
         beenden()
         time.sleep(Legende["averageTimerForLoop"])
+        if count > 10:
+            break
+    count =0
     py.click(max_loc)
     
     time.sleep(Legende["averageTimeGeneral"]+0.2)
